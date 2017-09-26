@@ -20,6 +20,7 @@
         "shared-modules/udev/udev-175.json",
         {
             "name": "gtk2",
+            "cleanup": ["/bin", "/share/gtk-2.0"],
             "config-opts": [
                 "--disable-gtk-doc",
                 "--disable-introspection",
@@ -48,6 +49,7 @@
         },
         {
             "name": "dbus-glib",
+            "cleanup": ["/bin", "/libexec", "/etc/bash_completion.d"],
             "config-opts": [
                 "--disable-static",
                 "--disable-gtk-doc"
@@ -63,6 +65,7 @@
         },
         {
             "name": "gconf",
+            "cleanup": ["/bin", "/libexec", "/share/sgml", "/etc/xdg/autostart"],
             "config-opts": [
                 "--disable-static",
                 "--disable-gtk-doc",
@@ -79,6 +82,7 @@
         },
         {
             "name": "libnotify",
+            "cleanup": ["/bin"],
             "config-opts": [
                 "--disable-static",
                 "--disable-tests",
@@ -93,15 +97,14 @@
             ]
         },
         {
-            "name": "gvfs",
-            "cleanup": [ "/libexec/*", "/share/dbus-1/services/*", "/share/gvfs/mounts" ],
-            "config-opts": [ "--disable-hal", "--disable-gdu", "--disable-gcr", "--disable-obexftp",
-                             "--disable-avahi", "--disable-documentation", "--disable-admin" ],
+            "name": "gvfs-trash",
+            "buildsystem": "simple",
+            "build-commands": [ "install -m755 gvfs-trash /app/bin/gvfs-trash" ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/gvfs/1.28/gvfs-1.28.0.tar.xz",
-                    "sha256": "cf72fc0adf0ca702ead5b3fab3c1fa46b09678eb7c1290de7e30bb7cbaf5f704"
+                    "type": "script",
+                    "dest-filename": "gvfs-trash",
+                    "commands": ["exec rm -r \"$@\""]
                 }
             ]
         },
@@ -135,6 +138,7 @@
         },
         {
             "name": "libdbusmenu",
+            "cleanup": ["/bin", "/libexec", "/share"],
             "config-opts": [
                 "--with-gtk=2",
                 "--disable-static",
@@ -154,6 +158,7 @@
         },
         {
             "name": "libindicator",
+            "cleanup": ["/libexec", "/share"],
             "config-opts": [
                 "--with-gtk=2",
                 "--disable-static",
