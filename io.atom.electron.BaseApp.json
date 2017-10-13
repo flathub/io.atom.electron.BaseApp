@@ -3,6 +3,7 @@
     "runtime": "org.freedesktop.Platform",
     "sdk": "org.freedesktop.Sdk",
     "runtime-version": "1.6",
+    "separate-locales": false,
     "cleanup": [ "/cache",
                  "/include",
                  "/lib/pkgconfig",
