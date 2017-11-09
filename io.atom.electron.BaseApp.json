@@ -21,7 +21,11 @@
         "shared-modules/udev/udev-175.json",
         {
             "name": "gtk2",
-            "cleanup": ["/bin", "/share/gtk-2.0"],
+            "cleanup": [
+              "/bin",
+              "/share/gtk-2.0",
+              "/lib/gtk-2.0/include"
+            ],
             "config-opts": [
                 "--disable-gtk-doc",
                 "--disable-introspection",
@@ -40,6 +44,10 @@
         {
             "name": "gnome-themes-standard",
             "config-opts": ["--disable-gtk3-engine"],
+            "cleanup": [
+              "/share/themes/Adwaita/gtk-3.0",
+              "/share/themes/HighContrast/gtk-3.0"
+            ],
             "sources": [
                 {
                     "type": "archive",
@@ -66,7 +74,13 @@
         },
         {
             "name": "gconf",
-            "cleanup": ["/bin", "/libexec", "/share/sgml", "/etc/xdg/autostart"],
+            "cleanup": [
+              "/bin",
+              "/libexec",
+              "/share/sgml",
+              "/etc/xdg/autostart",
+              "/share/dbus-1"
+            ],
             "config-opts": [
                 "--disable-static",
                 "--disable-gtk-doc",
