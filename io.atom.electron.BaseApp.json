@@ -20,48 +20,7 @@
                  "*.la", "*.a" ],
     "modules": [
         "shared-modules/udev/udev-175.json",
-        {
-            "name": "gtk2",
-            "cleanup": [
-              "/bin",
-              "/share/gtk-2.0",
-              "/lib/gtk-2.0/include"
-            ],
-            "config-opts": [
-                "--disable-gtk-doc",
-                "--disable-introspection",
-                "--disable-man",
-                "--disable-static",
-                "--with-xinput=xfree"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.32.tar.xz",
-                    "sha256": "b6c8a93ddda5eabe3bfee1eb39636c9a03d2a56c7b62828b359bf197943c582e"
-                },
-                {
-                    "type": "patch",
-                    "path": "gtk2-use-adwaita-theme.patch"
-                }
-            ]
-        },
-        {
-            "name": "gnome-themes-standard",
-            "config-opts": ["--disable-gtk3-engine"],
-            "cleanup": [
-              "/share/themes/Adwaita/gtk-3.0",
-              "/share/themes/Adwaita-dark/gtk-3.0",
-              "/share/themes/HighContrast/gtk-3.0"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/gnome-themes-standard/3.22/gnome-themes-standard-3.22.3.tar.xz",
-                    "sha256": "61dc87c52261cfd5b94d65e8ffd923ddeb5d3944562f84942eeeb197ab8ab56a"
-                }
-            ]
-        },
+        "shared-modules/gtk2/gtk2.json",
         {
             "name": "dbus-glib",
             "cleanup": ["/bin", "/libexec", "/etc/bash_completion.d"],
